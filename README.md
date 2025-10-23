@@ -78,3 +78,6 @@ C:.
 ---
 
 ### MODELO ENTIDADE RELACIONAMENTO DO BANCO
+<img width="1563" height="1512" alt="ERD TO TABLE" src="https://github.com/user-attachments/assets/897730b4-a4aa-4016-bc1e-87a21d2cc173" />
+
+
