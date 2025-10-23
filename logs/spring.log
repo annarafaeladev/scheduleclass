@@ -1,0 +1,63 @@
+2025-10-23T14:23:53.713Z  INFO 1 --- [scheduleclass] [main] b.c.a.s.ScheduleclassApplication         : Starting ScheduleclassApplication v0.0.1-SNAPSHOT using Java 21 with PID 1 (/app/app.jar started by root in /app)
+2025-10-23T14:23:53.734Z  INFO 1 --- [scheduleclass] [main] b.c.a.s.ScheduleclassApplication         : The following 1 profile is active: "docker"
+2025-10-23T14:23:54.489Z  INFO 1 --- [scheduleclass] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-23T14:23:54.512Z  INFO 1 --- [scheduleclass] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12 ms. Found 0 JPA repository interfaces.
+2025-10-23T14:23:55.051Z  INFO 1 --- [scheduleclass] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-10-23T14:23:55.075Z  INFO 1 --- [scheduleclass] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-23T14:23:55.076Z  INFO 1 --- [scheduleclass] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
+2025-10-23T14:23:55.107Z  INFO 1 --- [scheduleclass] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-10-23T14:23:55.108Z  INFO 1 --- [scheduleclass] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1314 ms
+2025-10-23T14:23:55.275Z  INFO 1 --- [scheduleclass] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-10-23T14:23:55.576Z  INFO 1 --- [scheduleclass] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@4dac121d
+2025-10-23T14:23:55.578Z  INFO 1 --- [scheduleclass] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-10-23T14:23:55.698Z  INFO 1 --- [scheduleclass] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-23T14:23:55.836Z  INFO 1 --- [scheduleclass] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.29.Final
+2025-10-23T14:23:55.897Z  INFO 1 --- [scheduleclass] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-10-23T14:23:56.376Z  INFO 1 --- [scheduleclass] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-23T14:23:56.491Z  INFO 1 --- [scheduleclass] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 15.14
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-10-23T14:23:56.961Z  INFO 1 --- [scheduleclass] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-23T14:23:56.969Z  INFO 1 --- [scheduleclass] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-23T14:23:57.030Z  WARN 1 --- [scheduleclass] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-23T14:23:57.504Z  INFO 1 --- [scheduleclass] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-10-23T14:23:57.517Z  INFO 1 --- [scheduleclass] [main] b.c.a.s.ScheduleclassApplication         : Started ScheduleclassApplication in 4.488 seconds (process running for 5.258)
+2025-10-23T14:32:27.352Z  INFO 1 --- [scheduleclass] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-10-23T14:32:27.356Z  INFO 1 --- [scheduleclass] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-10-23T14:32:27.361Z  INFO 1 --- [scheduleclass] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-23T14:32:27.365Z  INFO 1 --- [scheduleclass] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-10-23T14:32:27.370Z  INFO 1 --- [scheduleclass] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-10-23T14:34:22.626Z  INFO 1 --- [scheduleclass] [main] b.c.a.s.ScheduleclassApplication         : Starting ScheduleclassApplication v0.0.1-SNAPSHOT using Java 21 with PID 1 (/app/app.jar started by root in /app)
+2025-10-23T14:34:22.630Z  INFO 1 --- [scheduleclass] [main] b.c.a.s.ScheduleclassApplication         : The following 1 profile is active: "docker"
+2025-10-23T14:34:23.303Z  INFO 1 --- [scheduleclass] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-23T14:34:23.323Z  INFO 1 --- [scheduleclass] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 11 ms. Found 0 JPA repository interfaces.
+2025-10-23T14:34:23.793Z  INFO 1 --- [scheduleclass] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-10-23T14:34:23.813Z  INFO 1 --- [scheduleclass] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-23T14:34:23.814Z  INFO 1 --- [scheduleclass] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
+2025-10-23T14:34:23.843Z  INFO 1 --- [scheduleclass] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-10-23T14:34:23.844Z  INFO 1 --- [scheduleclass] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1158 ms
+2025-10-23T14:34:23.977Z  INFO 1 --- [scheduleclass] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-10-23T14:34:24.190Z  INFO 1 --- [scheduleclass] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@59939293
+2025-10-23T14:34:24.192Z  INFO 1 --- [scheduleclass] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-10-23T14:34:24.284Z  INFO 1 --- [scheduleclass] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-23T14:34:24.362Z  INFO 1 --- [scheduleclass] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.29.Final
+2025-10-23T14:34:24.402Z  INFO 1 --- [scheduleclass] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-10-23T14:34:24.717Z  INFO 1 --- [scheduleclass] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-23T14:34:24.829Z  INFO 1 --- [scheduleclass] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 15.14
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-10-23T14:34:25.108Z  INFO 1 --- [scheduleclass] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-23T14:34:25.119Z  INFO 1 --- [scheduleclass] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-23T14:34:25.171Z  WARN 1 --- [scheduleclass] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-23T14:34:25.548Z  INFO 1 --- [scheduleclass] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-10-23T14:34:25.561Z  INFO 1 --- [scheduleclass] [main] b.c.a.s.ScheduleclassApplication         : Started ScheduleclassApplication in 3.533 seconds (process running for 4.08)
