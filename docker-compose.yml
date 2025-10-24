@@ -3,14 +3,14 @@ version: '3.8'
 services:
   db:
     image: postgres:15
-    container_name: postgres_db
+    container_name: postgres_db_scheduleclass
     environment:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: admin
       POSTGRES_DB: SCHEDULECLASS_DB
     volumes:
       - postgres_data:/var/lib/postgresql/data
-      - ./src/main/resources/schema.sql:/docker-entrypoint-initdb.d/schema.sql:ro
+      # - ./src/main/resources/schema.sql:/docker-entrypoint-initdb.d/schema.sql:ro
       # - ./src/main/resources/data.sql:/docker-entrypoint-initdb.d/data.sql:ro
     ports:
       - "5432:5432"
@@ -20,26 +20,26 @@ services:
       timeout: 5s
       retries: 5
 
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    depends_on:
-      db:
-        condition: service_healthy
-    ports:
-      - "8080:8080"
-    environment:
-      SPRING_PROFILES_ACTIVE: docker
-      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/SCHEDULECLASS_DB
-      SPRING_DATASOURCE_USERNAME: admin
-      SPRING_DATASOURCE_PASSWORD: admin
-    volumes:
-      - ./logs:/app/logs
+#  app:
+#    build:
+#      context: .
+#      dockerfile: Dockerfile
+#    depends_on:
+#      db:
+#        condition: service_healthy
+#    ports:
+#      - "8080:8080"
+#    environment:
+#      SPRING_PROFILES_ACTIVE: docker
+#      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/SCHEDULECLASS_DB
+#      SPRING_DATASOURCE_USERNAME: admin
+#      SPRING_DATASOURCE_PASSWORD: admin
+#    volumes:
+#      - ./logs:/app/logs
 
   pgadmin:
     image: dpage/pgadmin4
-    container_name: pgadmin
+    container_name: pgadmin_scheduleclass
     restart: always
     environment:
       PGADMIN_DEFAULT_EMAIL: admin@admin.com
