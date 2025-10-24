@@ -22,6 +22,10 @@ O objetivo do sistema é gerenciar o agendamento de aulas, permitindo o cadastro
 - (Opcional) [Git](https://git-scm.com/)
 
 ---
+## Arquitetura Inicial
+Este projeto segue os princípios da Clean Architecture, separando claramente as camadas de domain, application e infrastructure. As regras de negócio estão encapsuladas no domain, os casos de uso e serviços de aplicação ficam na camada application, enquanto a persistência e APIs externas são tratadas na camada infrastructure. Essa abordagem garante manutenibilidade, testabilidade e independência de frameworks, facilitando futuras evoluções do sistema
+
+---
 
 ## 🧩 Subir a Aplicação
 
@@ -48,30 +52,64 @@ C:.
 │   script-app-logs.sh
 │   script-build.sh
 │
-└───src
-    ├───main
-    │   ├───java
-    │   │   └───br
-    │   │       └───com
-    │   │           └───api
-    │   │               └───scheduleclass
-    │   │                       ScheduleclassApplication.java
-    │   │
-    │   └───resources
-    │       │   application-docker.yml
-    │       │   application-local.yml
-    │       │   application.yml
-    │       │   schema.sql
-    │       │
-    │       ├───static
-    │       └───templates
-    └───test
-        └───java
-            └───br
-                └───com
-                    └───api
-                        └───scheduleclass
-                                ScheduleclassApplicationTests.java
+├───src
+│   ├───main
+│   │   ├───java
+│   │   │   └───br
+│   │   │       └───com
+│   │   │           └───api
+│   │   │               └───scheduleclass
+│   │   │                   │   ScheduleclassApplication.java
+│   │   │                   │
+│   │   │                   ├───application
+│   │   │                   │   ├───dto
+│   │   │                   │   ├───exception
+│   │   │                   │   └───usecase
+│   │   │                   ├───domain
+│   │   │                   │   ├───exception
+│   │   │                   │   ├───model
+│   │   │                   │   │       Academy.java
+│   │   │                   │   │       Belt.java
+│   │   │                   │   │       Booking.java
+│   │   │                   │   │       ClassSchedule.java
+│   │   │                   │   │       Instructor.java
+│   │   │                   │   │       Plan.java
+│   │   │                   │   │       Student.java
+│   │   │                   │   │
+│   │   │                   │   ├───repository
+│   │   │                   │   └───serivce
+│   │   │                   ├───infrastructure
+│   │   │                   │   └───persistence
+│   │   │                   │       ├───jpa
+│   │   │                   │       │       AcademyEntity.java
+│   │   │                   │       │       BaseEntity.java
+│   │   │                   │       │       BeltEntity.java
+│   │   │                   │       │       BookingEntity.java
+│   │   │                   │       │       ClassScheduleEntity.java
+│   │   │                   │       │       InstructorEntity.java
+│   │   │                   │       │       PlanEntity.java
+│   │   │                   │       │       StudentEntity.java
+│   │   │                   │       │
+│   │   │                   │       └───repository
+│   │   │                   └───web
+│   │   └───resources
+│   │       │   application-docker.yml
+│   │       │   application-local.yml
+│   │       │   application.yml
+│   │       │
+│   │       └───db
+│   │           └───migration
+│   │                   V1__init_schema.sql
+│   │                   V2__add_created_updated_columns.sql
+│   │                   V3__alter_default_boolean.sql
+│   │
+│   └───test
+│       └───java
+│           └───br
+│               └───com
+│                   └───api
+│                       └───scheduleclass
+│                               ScheduleclassApplicationTests.java
 ```
 
 
