@@ -32,5 +32,5 @@ public class InstructorEntity extends BaseEntity {
     private String phone;
 
     @Column(name = "is_owner", nullable = false)
-    private Boolean isOwner = true;
+    private Boolean isOwner = false;
 }

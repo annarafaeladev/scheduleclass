@@ -1,9 +1,23 @@
 -- 🟦 Faixa
+DROP TYPE IF EXISTS BELT_LEVEL;
+CREATE TYPE BELT_LEVEL AS ENUM ('WHITE', 'BLUE', 'PURPLE', 'BROWN', 'BLACK', 'CORAL');
+
 CREATE TABLE belt (
     id BIGSERIAL PRIMARY KEY,
-    name VARCHAR(50) NOT NULL, -- branca, azul, roxa, etc.
-    order_level INT NOT NULL -- facilita comparação (ex: 1=branca, 2=azul...)
+    name VARCHAR(10) NOT NULL,
+    belt_level BELT_LEVEL NOT NULL DEFAULT 'WHITE',
+    lessons_to_next INT DEFAULT 0 NOT NULL
 );
+
+-- Inserindo faixas na tabela belt
+INSERT INTO belt (name, belt_level, lessons_to_next) VALUES
+('Branca', 'WHITE', 30),
+('Azul', 'BLUE', 45),
+('Roxa', 'PURPLE', 60),
+('Marrom', 'BROWN', 90),
+('Preta', 'BLACK', 120),
+('Coral', 'CORAL', 0); -- Última faixa, sem próximo grau
+
 
 -- 📅 Plano (limite de aulas)
 CREATE TABLE plan (
@@ -18,9 +32,9 @@ CREATE TABLE plan (
 CREATE TABLE academy (
     id BIGSERIAL PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
-    address VARCHAR(200),
-    phone VARCHAR(20),
-    email VARCHAR(100),
+    address VARCHAR(300) NOT NULL,
+    phone VARCHAR(20) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -31,8 +45,8 @@ CREATE TABLE instructor (
     name VARCHAR(100) NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
     password_hash VARCHAR(255) NOT NULL,
-    phone VARCHAR(20),
-    is_owner BOOLEAN DEFAULT TRUE,
+    phone VARCHAR(20) NOT NULL,
+    is_owner BOOLEAN DEFAULT FALSE,
     FOREIGN KEY (academy_id) REFERENCES academy(id)
 );
 
@@ -42,8 +56,10 @@ CREATE TABLE student (
     academy_id BIGINT NOT NULL,
     name VARCHAR(100) NOT NULL,
     email VARCHAR(100) UNIQUE,
-    phone VARCHAR(20),
+    phone VARCHAR(20) NOT NULL,
     belt_id BIGINT,
+    belt_degree INT DEFAULT 0,
+    total_bookings INT DEFAULT 0,
     plan_id BIGINT,
     active BOOLEAN DEFAULT TRUE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -61,7 +77,7 @@ CREATE TABLE class_schedule (
     start_time TIME NOT NULL,
     end_time TIME NOT NULL,
     max_students INT NOT NULL,
-    belt_min_level INT, -- exemplo: só acima da faixa azul
+    min_belt_degree INT,
     active BOOLEAN DEFAULT TRUE,
     FOREIGN KEY (academy_id) REFERENCES academy(id),
     FOREIGN KEY (instructor_id) REFERENCES instructor(id)

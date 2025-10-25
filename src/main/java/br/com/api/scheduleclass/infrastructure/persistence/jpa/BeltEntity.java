@@ -1,5 +1,6 @@
 package br.com.api.scheduleclass.infrastructure.persistence.jpa;
 
+import br.com.api.scheduleclass.domain.enums.BeltLevel;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -15,9 +16,13 @@ public class BeltEntity extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name", nullable = false, length = 50)
+    @Column(name = "name", nullable = false, length = 10)
     private String name;
 
-    @Column(name = "order_level", nullable = false)
-    private int orderLevel;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "belt_level", nullable = false)
+    private BeltLevel beltLevel = BeltLevel.WHITE;
+
+    @Column(name = "lessons_to_next", nullable = false)
+    private int lessonsTonext = 0;
 }

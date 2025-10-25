@@ -27,12 +27,18 @@ public class StudentEntity extends BaseEntity {
     @Column(length = 100, unique = true)
     private String email;
 
-    @Column(length = 20)
+    @Column(nullable = false, length = 20)
     private String phone;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "belt_id")
     private BeltEntity belt;
+
+    @Column(name = "belt_degree")
+    private int beltDegree = 0;
+
+    @Column(name = "total_bookings")
+    private int totalBookings = 0;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "plan_id")

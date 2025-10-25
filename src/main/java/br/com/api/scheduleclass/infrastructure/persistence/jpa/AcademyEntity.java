@@ -20,13 +20,13 @@ public class AcademyEntity extends BaseEntity {
     @Column(nullable = false, length = 100)
     private String name;
 
-    @Column(length = 200)
+    @Column(nullable = false, length = 300)
     private String address;
 
-    @Column(length = 20)
+    @Column(nullable = false, length = 20)
     private String phone;
 
-    @Column(length = 100)
+    @Column(nullable = false, unique = true, length = 100)
     private String email;
 }
 

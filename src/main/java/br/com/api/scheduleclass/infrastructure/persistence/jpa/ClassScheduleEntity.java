@@ -37,8 +37,8 @@ public class ClassScheduleEntity extends BaseEntity {
     @Column(name = "max_students", nullable = false)
     private Integer maxStudents;
 
-    @Column(name = "belt_min_level")
-    private Integer beltMinLevel; // exemplo: só acima da faixa azul
+    @Column(name = "min_belt_degree")
+    private Integer minBeltDegree; // exemplo: só acima da faixa azul
 
     @Column(nullable = false)
     private Boolean active = true;
