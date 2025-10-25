@@ -25,6 +25,24 @@ O objetivo do sistema é gerenciar o agendamento de aulas, permitindo o cadastro
 ## Arquitetura Inicial
 Este projeto segue os princípios da Clean Architecture, separando claramente as camadas de domain, application e infrastructure. As regras de negócio estão encapsuladas no domain, os casos de uso e serviços de aplicação ficam na camada application, enquanto a persistência e APIs externas são tratadas na camada infrastructure. Essa abordagem garante manutenibilidade, testabilidade e independência de frameworks, facilitando futuras evoluções do sistema
 
+### Fluxo das camadas:
+
+* Controller: adapter que recebe HTTP, transforma DTO e chama Use Case.
+
+* Use Case: regra de aplicação (orquestra domain e repositórios).
+
+* Domain: lógica de negócio pura.
+
+```
+Client HTTP -> Controller -> Use Case -> Domain (entidades & regras) 
+                      ^ 
+                      | 
+                 Infrastructure (implementa interfaces chamadas pelo Use Case)
+
+
+````
+
+Infrastructure: implementação concreta de repositórios, JPA, serviços externos.
 ---
 
 ## 🧩 Subir a Aplicação
