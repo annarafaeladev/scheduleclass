@@ -1,4 +1,4 @@
-package br.com.api.scheduleclass.infrastructure.persistence.config.swagger;
+package br.com.api.scheduleclass.infrastructure.swagger;
 
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Contact;

@@ -61,79 +61,56 @@ docker-compose up -d
 ## ⚙️ Estrutura do Projeto
 
 ```
-C:.
-│   .gitignore
-│   docker-compose.yml
-│   Dockerfile
-│   pom.xml
-│   README.md
-│   script-app-logs.sh
-│   script-build.sh
+Scheduleclass
 │
-├───src
-│   ├───main
-│   │   ├───java
-│   │   │   └───br
-│   │   │       └───com
-│   │   │           └───api
-│   │   │               └───scheduleclass
-│   │   │                   │   ScheduleclassApplication.java
-│   │   │                   │
-│   │   │                   ├───application
-│   │   │                   │   ├───dto
-│   │   │                   │   ├───exception
-│   │   │                   │   └───usecase
-│   │   │                   ├───domain
-│   │   │                   │   ├───exception
-│   │   │                   │   ├───model
-│   │   │                   │   │       Academy.java
-│   │   │                   │   │       Belt.java
-│   │   │                   │   │       Booking.java
-│   │   │                   │   │       ClassSchedule.java
-│   │   │                   │   │       Instructor.java
-│   │   │                   │   │       Plan.java
-│   │   │                   │   │       Student.java
-│   │   │                   │   │
-│   │   │                   │   ├───repository
-│   │   │                   │   └───serivce
-│   │   │                   ├───infrastructure
-│   │   │                   │   └───persistence
-│   │   │                   │       ├───jpa
-│   │   │                   │       │       AcademyEntity.java
-│   │   │                   │       │       BaseEntity.java
-│   │   │                   │       │       BeltEntity.java
-│   │   │                   │       │       BookingEntity.java
-│   │   │                   │       │       ClassScheduleEntity.java
-│   │   │                   │       │       InstructorEntity.java
-│   │   │                   │       │       PlanEntity.java
-│   │   │                   │       │       StudentEntity.java
-│   │   │                   │       │
-│   │   │                   │       └───repository
-│   │   │                   └───web
-│   │   └───resources
-│   │       │   application-docker.yml
-│   │       │   application-local.yml
-│   │       │   application.yml
-│   │       │
-│   │       └───db
-│   │           └───migration
-│   │                   V1__init_schema.sql
-│   │                   V2__add_created_updated_columns.sql
-│   │                   V3__alter_default_boolean.sql
-│   │
-│   └───test
-│       └───java
-│           └───br
-│               └───com
-│                   └───api
-│                       └───scheduleclass
-│                               ScheduleclassApplicationTests.java
-```
+├── application        # Casos de uso, DTOs e exceções de aplicação
+│   ├─ dto             # DTOs (ex.: ErrorResponseDTO)
+│   ├─ exception       # Exceções da camada de aplicação
+│   └─ usecase
+│       ├─ academy
+│       │   ├─ GetAcademyUseCase.java      # Interface do Use Case
+│       │   └─ impl
+│       │       └─ GetAcademyUseCaseImpl.java  # Implementação do Use Case
+│       └─ student
+│
+├── config             # Configurações gerais e de Use Cases
+│   └─ usecase
+│       └─ AcademyUseCaseConfig.java
+│
+├── domain             # Domínio do negócio
+│   ├─ enums           # Enums de negócio
+│   ├─ exception       # Exceções de domínio (ex.: AcademyNotFoundException)
+│   ├─ model           # Entidades do domínio (ex.: Academy, Student)
+│   ├─ repository      # Interfaces de repositório
+│   └─ service
+│       ├─ AcademyService.java
+│       └─ impl
+│           └─ AcademyServiceImpl.java
+│
+├── infrastructure     # Implementações concretas e integrações externas
+│   ├─ persistence
+│   │   ├─ jpa         # Entities JPA (ex.: AcademyEntity)
+│   │   └─ repository
+│   │       ├─ AcademyJpaRepository.java
+│   │       └─ impl
+│   │           └─ AcademyRepositoryImpl.java
+│   └─ swagger
+│       └─ SwaggerConfig.java
+│
+└── web                # Controllers e handlers
+    └─ controller
+        ├─ AcademyController.java
+        └─ GlobalExceptionHandler.java
 
+
+```
 
 ---
 
 ### MODELO ENTIDADE RELACIONAMENTO DO BANCO
 <img width="1563" height="1512" alt="ERD TO TABLE" src="https://github.com/user-attachments/assets/897730b4-a4aa-4016-bc1e-87a21d2cc173" />
 
+# Referências
+
+- [O Use Case: Modelando as Interações do Seu Domínio](https://medium.com/inside-picpay/o-use-case-modelando-as-intera%C3%A7%C3%B5es-do-seu-dom%C3%ADnio-c6c568270d0c)
 
