@@ -108,7 +108,8 @@ Scheduleclass
 ---
 
 ### MODELO ENTIDADE RELACIONAMENTO DO BANCO
-<img width="1563" height="1512" alt="ERD TO TABLE" src="https://github.com/user-attachments/assets/897730b4-a4aa-4016-bc1e-87a21d2cc173" />
+<img width="2144" height="1121" alt="Untitled (1)" src="https://github.com/user-attachments/assets/46a556c2-fdca-4bc5-9dd5-25213540d20b" />
+
 
 # Referências
 
