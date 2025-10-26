@@ -23,7 +23,14 @@ public class Academy {
         this.updatedAt = updatedAt;
     }
 
-    public Long getId() {
+    public Academy(String name, String address, String phone, String email) {
+        this.name = name;
+        this.address = address;
+        this.phone = phone;
+        this.email = email;
+    }
+
+        public Long getId() {
         return id;
     }
 

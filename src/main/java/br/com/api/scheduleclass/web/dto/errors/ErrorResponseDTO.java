@@ -1,4 +1,4 @@
-package br.com.api.scheduleclass.application.dto;
+package br.com.api.scheduleclass.web.dto.errors;
 
 import java.time.LocalDateTime;
 

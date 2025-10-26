@@ -21,6 +21,26 @@ public class AcademyRepositoryImpl implements AcademyRepository {
                 .map(this::toDomain);
     }
 
+    @Override
+    public Long save(Academy academy) {
+        AcademyEntity entity = toEntity(academy);
+
+        AcademyEntity academyEntity = academyJpaRepository.save(entity);
+
+        return academyEntity.getId();
+    }
+
+    @Override
+    public Optional<Academy> findByEmail(String email) {
+        return academyJpaRepository.findByEmail(email)
+                .map(this::toDomain);
+    }
+
+    @Override
+    public boolean existsByEmail(String email) {
+        return academyJpaRepository.existsByEmail(email);
+    }
+
     private Academy toDomain(AcademyEntity entity) {
         return new Academy(
                 entity.getId(),
@@ -38,6 +58,9 @@ public class AcademyRepositoryImpl implements AcademyRepository {
         entity.setId(academy.getId());
         entity.setName(academy.getName());
         entity.setAddress(academy.getAddress());
+        entity.setEmail(academy.getEmail());
+        entity.setPhone(academy.getPhone());
+
         return entity;
     }
 }

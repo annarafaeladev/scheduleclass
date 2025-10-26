@@ -41,8 +41,6 @@ Client HTTP -> Controller -> Use Case -> Domain (entidades & regras)
 
 
 ````
-
-Infrastructure: implementação concreta de repositórios, JPA, serviços externos.
 ---
 
 ## 🧩 Subir a Aplicação
@@ -61,47 +59,46 @@ docker-compose up -d
 ## ⚙️ Estrutura do Projeto
 
 ```
-Scheduleclass
-│
-├── application        # Casos de uso, DTOs e exceções de aplicação
-│   ├─ dto             # DTOs (ex.: ErrorResponseDTO)
-│   ├─ exception       # Exceções da camada de aplicação
-│   └─ usecase
-│       ├─ academy
-│       │   ├─ GetAcademyUseCase.java      # Interface do Use Case
-│       │   └─ impl
-│       │       └─ GetAcademyUseCaseImpl.java  # Implementação do Use Case
-│       └─ student
-│
-├── config             # Configurações gerais e de Use Cases
-│   └─ usecase
-│       └─ AcademyUseCaseConfig.java
-│
-├── domain             # Domínio do negócio
-│   ├─ enums           # Enums de negócio
-│   ├─ exception       # Exceções de domínio (ex.: AcademyNotFoundException)
-│   ├─ model           # Entidades do domínio (ex.: Academy, Student)
-│   ├─ repository      # Interfaces de repositório
-│   └─ service
-│       ├─ AcademyService.java
-│       └─ impl
-│           └─ AcademyServiceImpl.java
-│
-├── infrastructure     # Implementações concretas e integrações externas
-│   ├─ persistence
-│   │   ├─ jpa         # Entities JPA (ex.: AcademyEntity)
-│   │   └─ repository
-│   │       ├─ AcademyJpaRepository.java
-│   │       └─ impl
-│   │           └─ AcademyRepositoryImpl.java
-│   └─ swagger
-│       └─ SwaggerConfig.java
-│
-└── web                # Controllers e handlers
-    └─ controller
-        ├─ AcademyController.java
-        └─ GlobalExceptionHandler.java
-
+C:.
+├───main
+│   ├───java
+│   │   └───br
+│   │       └───com
+│   │           └───api
+│   │               └───scheduleclass
+│   │                   ├───application
+│   │                   │   ├───common
+│   │                   │   ├───dto
+│   │                   │   │   └───academy
+│   │                   │   ├───exception
+│   │                   │   ├───repository
+│   │                   │   └───usecase
+│   │                   │       ├───academy
+│   │                   │       │   └───impl
+│   │                   │       └───student
+│   │                   ├───config
+│   │                   │   └───usecase
+│   │                   ├───domain
+│   │                   │   ├───enums
+│   │                   │   ├───exception
+│   │                   │   ├───model
+│   │                   │   └───serivce
+│   │                   │       └───impl
+│   │                   ├───infrastructure
+│   │                   │   ├───persistence
+│   │                   │   │   ├───jpa
+│   │                   │   │   └───repository
+│   │                   │   │       └───impl
+│   │                   │   └───swagger
+│   │                   └───web
+│   │                       ├───controller
+│   │                       ├───dto
+│   │                       │   ├───academy
+│   │                       │   └───errors
+│   │                       └───handler
+│   └───resources
+│       └───db
+│           └───migration
 
 ```
 
