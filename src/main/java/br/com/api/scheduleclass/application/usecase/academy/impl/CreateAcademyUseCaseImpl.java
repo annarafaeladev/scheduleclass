@@ -1,6 +1,6 @@
 package br.com.api.scheduleclass.application.usecase.academy.impl;
 
-import br.com.api.scheduleclass.application.dto.academy.CreateAcademyCommand;
+import br.com.api.scheduleclass.application.dto.academy.AcademyCommand;
 import br.com.api.scheduleclass.application.repository.AcademyRepository;
 import br.com.api.scheduleclass.application.usecase.academy.CreateAcademyUseCase;
 import br.com.api.scheduleclass.domain.model.Academy;
@@ -17,21 +17,22 @@ public class CreateAcademyUseCaseImpl implements CreateAcademyUseCase {
     }
 
     @Override
-    public Long execute(CreateAcademyCommand command) {
+    public Long execute(AcademyCommand command) {
         boolean emailAlreadyExists = repository.existsByEmail(command.email());
         academyService.validateUniqueEmail(emailAlreadyExists);
 
         Academy academy = toAcademy(command);
 
-        return repository.save(academy);
+        return repository.save(academy).getId();
     }
 
-    private static Academy toAcademy(CreateAcademyCommand command) {
+    private static Academy toAcademy(AcademyCommand command) {
         return new Academy(
                 command.name(),
                 command.address(),
                 command.phone(),
-                command.email()
+                command.email(),
+                true
         );
     }
 }

@@ -7,7 +7,7 @@ import java.util.Optional;
 public interface AcademyRepository {
 
     Optional<Academy> findById(Long id);
-    Long save(Academy academy);
+    Academy save(Academy academy);
     Optional<Academy> findByEmail(String email);
     boolean existsByEmail(String email);
 }

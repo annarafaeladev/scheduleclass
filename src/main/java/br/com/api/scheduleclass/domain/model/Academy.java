@@ -8,29 +8,32 @@ public class Academy {
     private String address;
     private String phone;
     private String email;
+    private Boolean active;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
     public Academy() {}
 
-    public Academy(Long id, String name, String address, String phone, String email, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public Academy(Long id, String name, String address, String phone, String email, boolean active, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.id = id;
         this.name = name;
         this.address = address;
         this.phone = phone;
         this.email = email;
+        this.active = active;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
 
-    public Academy(String name, String address, String phone, String email) {
+    public Academy(String name, String address, String phone, String email, boolean active) {
         this.name = name;
         this.address = address;
         this.phone = phone;
         this.email = email;
+        this.active = active;
     }
 
-        public Long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -68,6 +71,14 @@ public class Academy {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
     }
 
     public LocalDateTime getCreatedAt() {

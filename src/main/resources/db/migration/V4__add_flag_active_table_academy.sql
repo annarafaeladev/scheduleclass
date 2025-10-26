@@ -1,0 +1,2 @@
+ALTER TABLE academy
+    ADD COLUMN active BOOLEAN DEFAULT TRUE;

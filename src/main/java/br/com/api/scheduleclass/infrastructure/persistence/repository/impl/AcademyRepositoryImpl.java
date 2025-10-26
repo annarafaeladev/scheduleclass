@@ -22,12 +22,12 @@ public class AcademyRepositoryImpl implements AcademyRepository {
     }
 
     @Override
-    public Long save(Academy academy) {
+    public Academy save(Academy academy) {
         AcademyEntity entity = toEntity(academy);
 
         AcademyEntity academyEntity = academyJpaRepository.save(entity);
 
-        return academyEntity.getId();
+        return toDomain(academyEntity);
     }
 
     @Override
@@ -48,6 +48,7 @@ public class AcademyRepositoryImpl implements AcademyRepository {
                 entity.getAddress(),
                 entity.getPhone(),
                 entity.getEmail(),
+                entity.getActive(),
                 entity.getCreatedAt(),
                 entity.getUpdatedAt()
         );
@@ -60,6 +61,7 @@ public class AcademyRepositoryImpl implements AcademyRepository {
         entity.setAddress(academy.getAddress());
         entity.setEmail(academy.getEmail());
         entity.setPhone(academy.getPhone());
+        entity.setActive(academy.getActive());
 
         return entity;
     }

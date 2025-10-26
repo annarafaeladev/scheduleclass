@@ -1,7 +1,6 @@
 package br.com.api.scheduleclass.web.handler;
 
 import br.com.api.scheduleclass.web.dto.errors.ErrorResponseDTO;
-import br.com.api.scheduleclass.web.dto.errors.ErrorsResponseDTO;
 import br.com.api.scheduleclass.application.exception.AcademyNotFoundException;
 import br.com.api.scheduleclass.application.exception.BusinessException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -22,22 +21,19 @@ public class GlobalExceptionHandler {
             AcademyNotFoundException ex,
             HttpServletRequest request
     ) {
-        ErrorResponseDTO error = new ErrorResponseDTO(
-                HttpStatus.NOT_FOUND.value(),
-                HttpStatus.NOT_FOUND.getReasonPhrase(),
-                ex.getMessage(),
-                request.getRequestURI()
-        );
+        ErrorResponseDTO error = new ErrorResponseDTO();
+
+        error.setStatus(HttpStatus.NOT_FOUND.value());
+        error.setError(ex.getMessage());
+        error.setMessage(HttpStatus.NOT_FOUND.getReasonPhrase());
+        error.setPath(request.getRequestURI());
+
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
     }
 
-    // Aqui você pode adicionar outros handlers para outras exceções
-    // @ExceptionHandler(StudentNotFoundException.class)
-    // public ResponseEntity<String> handleStudentNotFound(StudentNotFoundException ex) { ... }
-
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<ErrorsResponseDTO> handleValidationErrors(
+    public ResponseEntity<ErrorResponseDTO> handleValidationErrors(
             MethodArgumentNotValidException ex,
             HttpServletRequest request) {
 
@@ -45,18 +41,18 @@ public class GlobalExceptionHandler {
                 .map(err -> err.getField() + ": " + err.getDefaultMessage())
                 .toList();
 
-        ErrorsResponseDTO errorResponse = new ErrorsResponseDTO(
-                HttpStatus.BAD_REQUEST.value(),
-                errorMessages,
-                HttpStatus.BAD_REQUEST.getReasonPhrase(),
-                request.getRequestURI()
-        );
+        ErrorResponseDTO errorResponse = new ErrorResponseDTO();
+
+        errorResponse.setStatus(HttpStatus.BAD_REQUEST.value());
+        errorResponse.setErrors(errorMessages);
+        errorResponse.setMessage(HttpStatus.BAD_REQUEST.getReasonPhrase());
+        errorResponse.setPath(request.getRequestURI());
 
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
     }
 
     @ExceptionHandler(ConstraintViolationException.class)
-    public ResponseEntity<ErrorsResponseDTO> handleConstraintViolation(
+    public ResponseEntity<ErrorResponseDTO> handleConstraintViolation(
             ConstraintViolationException ex,
             HttpServletRequest request) {
 
@@ -64,12 +60,13 @@ public class GlobalExceptionHandler {
                 .map(v -> v.getPropertyPath() + ": " + v.getMessage())
                 .toList();
 
-        ErrorsResponseDTO errorResponse = new ErrorsResponseDTO(
-                HttpStatus.BAD_REQUEST.value(),
-                errorMessages,
-                HttpStatus.BAD_REQUEST.getReasonPhrase(),
-                request.getRequestURI()
-        );
+
+        ErrorResponseDTO errorResponse = new ErrorResponseDTO();
+
+        errorResponse.setStatus(HttpStatus.BAD_REQUEST.value());
+        errorResponse.setErrors(errorMessages);
+        errorResponse.setMessage(HttpStatus.BAD_REQUEST.getReasonPhrase());
+        errorResponse.setPath(request.getRequestURI());
 
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
     }
@@ -79,12 +76,13 @@ public class GlobalExceptionHandler {
             BusinessException ex,
             HttpServletRequest request) {
 
-        ErrorResponseDTO errorResponse = new ErrorResponseDTO(
-                HttpStatus.BAD_REQUEST.value(),
-                HttpStatus.BAD_REQUEST.getReasonPhrase(),
-                ex.getMessage(),
-                request.getRequestURI()
-        );
+
+        ErrorResponseDTO errorResponse = new ErrorResponseDTO();
+
+        errorResponse.setStatus(HttpStatus.BAD_REQUEST.value());
+        errorResponse.setError(ex.getMessage());
+        errorResponse.setMessage(HttpStatus.BAD_REQUEST.getReasonPhrase());
+        errorResponse.setPath(request.getRequestURI());
 
         return ResponseEntity.badRequest().body(errorResponse);
     }
@@ -94,12 +92,13 @@ public class GlobalExceptionHandler {
             Exception ex,
             HttpServletRequest request) {
 
-        ErrorResponseDTO errorResponse = new ErrorResponseDTO(
-                HttpStatus.INTERNAL_SERVER_ERROR.value(),
-                HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase(),
-                "Erro interno no servidor",
-                request.getRequestURI()
-        );
+
+        ErrorResponseDTO errorResponse = new ErrorResponseDTO();
+
+        errorResponse.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+        errorResponse.setError("Error interno servidor");
+        errorResponse.setMessage(HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase());
+        errorResponse.setPath(request.getRequestURI());
 
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
     }
