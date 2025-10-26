@@ -1,4 +1,4 @@
-package br.com.api.scheduleclass.domain.repository;
+package br.com.api.scheduleclass.application.repository;
 
 import br.com.api.scheduleclass.domain.model.Academy;
 

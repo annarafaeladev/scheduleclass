@@ -1,7 +1,7 @@
 package br.com.api.scheduleclass.web.controller;
 
 import br.com.api.scheduleclass.application.dto.ErrorResponseDTO;
-import br.com.api.scheduleclass.application.usecase.academy.GetAcademyUseCase;
+import br.com.api.scheduleclass.application.usecase.academy.AcademyFindByIdUseCase;
 import br.com.api.scheduleclass.domain.model.Academy;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class AcademyController {
 
-    private final GetAcademyUseCase getAcademyUseCase;
+    private final AcademyFindByIdUseCase getAcademyUseCase;
 
     @Operation(summary = "Buscar academia por id")
     @ApiResponses(value = {

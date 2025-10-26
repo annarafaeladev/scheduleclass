@@ -1,7 +1,7 @@
 package br.com.api.scheduleclass.web.controller;
 
 import br.com.api.scheduleclass.application.dto.ErrorResponseDTO;
-import br.com.api.scheduleclass.domain.exception.AcademyNotFoundException;
+import br.com.api.scheduleclass.application.exception.AcademyNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

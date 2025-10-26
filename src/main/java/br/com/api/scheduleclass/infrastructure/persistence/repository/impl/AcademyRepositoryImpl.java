@@ -1,7 +1,7 @@
 package br.com.api.scheduleclass.infrastructure.persistence.repository.impl;
 
 import br.com.api.scheduleclass.domain.model.Academy;
-import br.com.api.scheduleclass.domain.repository.AcademyRepository;
+import br.com.api.scheduleclass.application.repository.AcademyRepository;
 import br.com.api.scheduleclass.infrastructure.persistence.jpa.AcademyEntity;
 import br.com.api.scheduleclass.infrastructure.persistence.repository.AcademyJpaRepository;
 import lombok.RequiredArgsConstructor;
