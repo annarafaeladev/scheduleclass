@@ -28,6 +28,7 @@ public class StudentResumeFindByIdUseCaseImpl implements StudentResumeFindByIdUs
                 student.getEmail(),
                 student.getPhone(),
                 student.isActive(),
+                student.getBelt().getName(),
                 student.getBeltDegree(),
                 student.getTotalBookings()
         );

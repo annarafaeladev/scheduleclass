@@ -3,9 +3,9 @@ package br.com.api.scheduleclass.domain.serivce.impl;
 import br.com.api.scheduleclass.application.dto.academy.AcademyCommand;
 import br.com.api.scheduleclass.application.exception.BusinessException;
 import br.com.api.scheduleclass.domain.model.Academy;
-import br.com.api.scheduleclass.domain.serivce.AcademyService;
+import br.com.api.scheduleclass.domain.serivce.AcademyDomainService;
 
-public class AcademyServiceImpl implements AcademyService {
+public class AcademyServiceImpl implements AcademyDomainService {
 
     @Override
     public void validateUniqueEmail(boolean emailAlreadyExists) {

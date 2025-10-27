@@ -1,12 +1,8 @@
 package br.com.api.scheduleclass.infrastructure.persistence.repository.impl;
 
 import br.com.api.scheduleclass.application.repository.StudentRepository;
-import br.com.api.scheduleclass.domain.model.Academy;
-import br.com.api.scheduleclass.domain.model.Belt;
 import br.com.api.scheduleclass.domain.model.Student;
 import br.com.api.scheduleclass.infrastructure.mapper.StudentMapper;
-import br.com.api.scheduleclass.infrastructure.persistence.jpa.AcademyEntity;
-import br.com.api.scheduleclass.infrastructure.persistence.jpa.BeltEntity;
 import br.com.api.scheduleclass.infrastructure.persistence.jpa.StudentEntity;
 import br.com.api.scheduleclass.infrastructure.persistence.repository.StudentJpaRepository;
 import lombok.RequiredArgsConstructor;
@@ -40,8 +36,8 @@ public class StudentRepositoryImpl implements StudentRepository {
     }
 
     @Override
-    public boolean existsByEmail(String email) {
-        return repository.existsByEmail(email);
+    public boolean existsByEmailByAcademyId(String email, Long academyId) {
+        return repository.existsByEmailAndAcademyId(email, academyId);
     }
 
 }

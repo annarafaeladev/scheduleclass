@@ -4,14 +4,14 @@ import br.com.api.scheduleclass.application.dto.academy.AcademyCommand;
 import br.com.api.scheduleclass.application.repository.AcademyRepository;
 import br.com.api.scheduleclass.application.usecase.academy.CreateAcademyUseCase;
 import br.com.api.scheduleclass.domain.model.Academy;
-import br.com.api.scheduleclass.domain.serivce.AcademyService;
+import br.com.api.scheduleclass.domain.serivce.AcademyDomainService;
 
 public class CreateAcademyUseCaseImpl implements CreateAcademyUseCase {
 
     private final AcademyRepository repository;
-    private final AcademyService academyService;
+    private final AcademyDomainService academyService;
 
-    public CreateAcademyUseCaseImpl(AcademyRepository repository, AcademyService academyService) {
+    public CreateAcademyUseCaseImpl(AcademyRepository repository, AcademyDomainService academyService) {
         this.repository = repository;
         this.academyService = academyService;
     }

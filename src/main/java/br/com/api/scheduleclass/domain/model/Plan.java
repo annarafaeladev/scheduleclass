@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 public class Plan extends Base {
     private Long id;
     private String name;
-    private int monthlyLimit;
+    private Integer monthlyLimit;
     private BigDecimal price;
     private String description;
 
@@ -14,7 +14,7 @@ public class Plan extends Base {
         super(LocalDateTime.now(), LocalDateTime.now());
     }
 
-    public Plan(Long id, String name, int monthlyLimit, BigDecimal price, String description, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public Plan(Long id, String name, Integer monthlyLimit, BigDecimal price, String description, LocalDateTime createdAt, LocalDateTime updatedAt) {
         super(createdAt, updatedAt);
         this.id = id;
         this.name = name;
@@ -39,11 +39,11 @@ public class Plan extends Base {
         this.name = name;
     }
 
-    public int getMonthlyLimit() {
+    public Integer getMonthlyLimit() {
         return monthlyLimit;
     }
 
-    public void setMonthlyLimit(int monthlyLimit) {
+    public void setMonthlyLimit(Integer monthlyLimit) {
         this.monthlyLimit = monthlyLimit;
     }
 

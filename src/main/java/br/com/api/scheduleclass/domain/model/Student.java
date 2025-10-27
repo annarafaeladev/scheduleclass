@@ -33,6 +33,18 @@ public class Student extends Base {
         this.plan = plan;
     }
 
+    public Student(LocalDateTime createdAt, LocalDateTime updatedAt, String name, String email, String phone, boolean active, int beltDegree, int totalBookings, Academy academy, Belt belt) {
+        super(createdAt, updatedAt);
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.active = active;
+        this.beltDegree = beltDegree;
+        this.totalBookings = totalBookings;
+        this.academy = academy;
+        this.belt = belt;
+    }
+
     public Long getId() {
         return id;
     }

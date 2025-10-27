@@ -6,6 +6,7 @@ public record StudentResume(
         String email,
         String phone,
         boolean active,
+        String belt,
         int beltDegree,
         int totalBookings
 ) {

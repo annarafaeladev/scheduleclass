@@ -5,14 +5,14 @@ import br.com.api.scheduleclass.application.exception.AcademyNotFoundException;
 import br.com.api.scheduleclass.application.repository.AcademyRepository;
 import br.com.api.scheduleclass.application.usecase.academy.StatusAcademyByIdUseCase;
 import br.com.api.scheduleclass.domain.model.Academy;
-import br.com.api.scheduleclass.domain.serivce.AcademyService;
+import br.com.api.scheduleclass.domain.serivce.AcademyDomainService;
 
 public class StatusAcademyUseCaseImpl implements StatusAcademyByIdUseCase {
 
     private final AcademyRepository repository;
-    private final AcademyService academyService;
+    private final AcademyDomainService academyService;
 
-    public StatusAcademyUseCaseImpl(AcademyRepository repository, AcademyService academyService) {
+    public StatusAcademyUseCaseImpl(AcademyRepository repository, AcademyDomainService academyService) {
         this.repository = repository;
         this.academyService = academyService;
     }
