@@ -2,7 +2,7 @@ package br.com.api.scheduleclass.domain.model;
 
 import java.time.LocalDateTime;
 
-public class ClassSchedule {
+public class ClassSchedule extends Base {
     private Long id;
     private Long academyId;
     private Long instructorId;
@@ -12,12 +12,13 @@ public class ClassSchedule {
     private int maxStudents;
     private int beltMinLevel;
     private boolean active;
-    private LocalDateTime createAt;
 
-    public ClassSchedule() {
+    public ClassSchedule(LocalDateTime createdAt, LocalDateTime updatedAt) {
+        super(createdAt, updatedAt);
     }
 
-    public ClassSchedule(Long id, Long academyId, Long instructorId, String dayOfWeek, LocalDateTime startTime, LocalDateTime endTime, int maxStudents, int beltMinLevel, boolean active, LocalDateTime createAt) {
+    public ClassSchedule(LocalDateTime createdAt, LocalDateTime updatedAt, Long id, Long academyId, Long instructorId, String dayOfWeek, LocalDateTime startTime, LocalDateTime endTime, int maxStudents, int beltMinLevel, boolean active) {
+        super(createdAt, updatedAt);
         this.id = id;
         this.academyId = academyId;
         this.instructorId = instructorId;
@@ -27,7 +28,6 @@ public class ClassSchedule {
         this.maxStudents = maxStudents;
         this.beltMinLevel = beltMinLevel;
         this.active = active;
-        this.createAt = createAt;
     }
 
     public Long getId() {
@@ -100,13 +100,5 @@ public class ClassSchedule {
 
     public void setActive(boolean active) {
         this.active = active;
-    }
-
-    public LocalDateTime getCreateAt() {
-        return createAt;
-    }
-
-    public void setCreateAt(LocalDateTime createAt) {
-        this.createAt = createAt;
     }
 }

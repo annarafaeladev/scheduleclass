@@ -2,7 +2,7 @@ package br.com.api.scheduleclass.domain.model;
 
 import java.time.LocalDateTime;
 
-public class Instructor {
+public class Instructor extends Base {
     private Long id;
     private Long academyId;
     private String name;
@@ -10,13 +10,13 @@ public class Instructor {
     private String password;
     private String phone;
     private boolean isOwner;
-//    private LocalDateTime createAt; todo inserir campos create_at and update_at
 
-
-    public Instructor() {
+    public Instructor(LocalDateTime createdAt, LocalDateTime updatedAt) {
+        super(createdAt, updatedAt);
     }
 
-    public Instructor(Long id, Long academyId, String name, String email, String password, String phone, boolean isOwner) {
+    public Instructor(LocalDateTime createdAt, LocalDateTime updatedAt, Long id, Long academyId, String name, String email, String password, String phone, boolean isOwner) {
+        super(createdAt, updatedAt);
         this.id = id;
         this.academyId = academyId;
         this.name = name;

@@ -1,8 +1,9 @@
 package br.com.api.scheduleclass.domain.model;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
-public class Plan {
+public class Plan extends Base {
     private Long id;
     private String name;
     private int monthlyLimit;
@@ -10,9 +11,11 @@ public class Plan {
     private String description;
 
     public Plan() {
+        super(LocalDateTime.now(), LocalDateTime.now());
     }
 
-    public Plan(Long id, String name, int monthlyLimit, BigDecimal price, String description) {
+    public Plan(Long id, String name, int monthlyLimit, BigDecimal price, String description, LocalDateTime createdAt, LocalDateTime updatedAt) {
+        super(createdAt, updatedAt);
         this.id = id;
         this.name = name;
         this.monthlyLimit = monthlyLimit;

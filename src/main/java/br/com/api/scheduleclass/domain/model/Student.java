@@ -2,30 +2,35 @@ package br.com.api.scheduleclass.domain.model;
 
 import java.time.LocalDateTime;
 
-public class Student {
+public class Student extends Base {
     private Long id;
-    private Long academyId;
     private String name;
     private String email;
     private String phone;
-    private Long belt_id;
-    private Long plan_id;
     private boolean active;
-    private LocalDateTime createAt;
+    private int beltDegree;
+    private int totalBookings = 0;
+    private Academy academy;
+    private Belt belt;
+    private Plan plan;
 
 
-    public Student() {}
+    public Student() {
+        super(LocalDateTime.now(), LocalDateTime.now());
+    }
 
-    public Student(Long id, Long academyId, String name, String email, String phone, Long belt_id, Long plan_id, boolean active, LocalDateTime createAt) {
+    public Student(Long id, String name, String email, String phone, boolean active, int beltDegree, int totalBookings, Academy academy, Belt belt, Plan plan, LocalDateTime createdAt, LocalDateTime updatedAt) {
+        super(createdAt, updatedAt);
         this.id = id;
-        this.academyId = academyId;
         this.name = name;
         this.email = email;
         this.phone = phone;
-        this.belt_id = belt_id;
-        this.plan_id = plan_id;
         this.active = active;
-        this.createAt = createAt;
+        this.beltDegree = beltDegree;
+        this.totalBookings = totalBookings;
+        this.academy = academy;
+        this.belt = belt;
+        this.plan = plan;
     }
 
     public Long getId() {
@@ -34,14 +39,6 @@ public class Student {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getAcademyId() {
-        return academyId;
-    }
-
-    public void setAcademyId(Long academyId) {
-        this.academyId = academyId;
     }
 
     public String getName() {
@@ -68,22 +65,6 @@ public class Student {
         this.phone = phone;
     }
 
-    public Long getBelt_id() {
-        return belt_id;
-    }
-
-    public void setBelt_id(Long belt_id) {
-        this.belt_id = belt_id;
-    }
-
-    public Long getPlan_id() {
-        return plan_id;
-    }
-
-    public void setPlan_id(Long plan_id) {
-        this.plan_id = plan_id;
-    }
-
     public boolean isActive() {
         return active;
     }
@@ -92,11 +73,43 @@ public class Student {
         this.active = active;
     }
 
-    public LocalDateTime getCreateAt() {
-        return createAt;
+    public int getBeltDegree() {
+        return beltDegree;
     }
 
-    public void setCreateAt(LocalDateTime createAt) {
-        this.createAt = createAt;
+    public void setBeltDegree(int beltDegree) {
+        this.beltDegree = beltDegree;
+    }
+
+    public int getTotalBookings() {
+        return totalBookings;
+    }
+
+    public void setTotalBookings(int totalBookings) {
+        this.totalBookings = totalBookings;
+    }
+
+    public Academy getAcademy() {
+        return academy;
+    }
+
+    public void setAcademy(Academy academy) {
+        this.academy = academy;
+    }
+
+    public Belt getBelt() {
+        return belt;
+    }
+
+    public void setBelt(Belt belt) {
+        this.belt = belt;
+    }
+
+    public Plan getPlan() {
+        return plan;
+    }
+
+    public void setPlan(Plan plan) {
+        this.plan = plan;
     }
 }

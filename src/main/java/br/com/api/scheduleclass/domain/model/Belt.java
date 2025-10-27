@@ -1,16 +1,25 @@
 package br.com.api.scheduleclass.domain.model;
 
-public class Belt {
+import br.com.api.scheduleclass.domain.enums.BeltLevel;
+
+import java.time.LocalDateTime;
+
+public class Belt extends Base {
     private Long id;
     private String name;
-    private int order_level;
+    private BeltLevel beltLevel;
+    private int lessonsTonext;
 
-    public Belt() {}
+    public Belt() {
+        super(LocalDateTime.now(), LocalDateTime.now());
+    }
 
-    public Belt(Long id, String name, int order_level) {
+    public Belt(Long id, String name, BeltLevel beltLevel, int lessonsTonext, LocalDateTime createdAt, LocalDateTime updatedAt) {
+        super(createdAt, updatedAt);
         this.id = id;
         this.name = name;
-        this.order_level = order_level;
+        this.beltLevel = beltLevel;
+        this.lessonsTonext = lessonsTonext;
     }
 
     public Long getId() {
@@ -29,11 +38,19 @@ public class Belt {
         this.name = name;
     }
 
-    public int getOrder_level() {
-        return order_level;
+    public BeltLevel getBeltLevel() {
+        return beltLevel;
     }
 
-    public void setOrder_level(int order_level) {
-        this.order_level = order_level;
+    public void setBeltLevel(BeltLevel beltLevel) {
+        this.beltLevel = beltLevel;
+    }
+
+    public int getLessonsTonext() {
+        return lessonsTonext;
+    }
+
+    public void setLessonsTonext(int lessonsTonext) {
+        this.lessonsTonext = lessonsTonext;
     }
 }
