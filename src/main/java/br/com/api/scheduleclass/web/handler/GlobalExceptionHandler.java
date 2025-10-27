@@ -1,5 +1,6 @@
 package br.com.api.scheduleclass.web.handler;
 
+import br.com.api.scheduleclass.application.exception.StudentNotFoundException;
 import br.com.api.scheduleclass.web.dto.errors.ErrorResponseDTO;
 import br.com.api.scheduleclass.application.exception.AcademyNotFoundException;
 import br.com.api.scheduleclass.application.exception.BusinessException;
@@ -19,6 +20,21 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(AcademyNotFoundException.class)
     public ResponseEntity<ErrorResponseDTO> handleAcademyNotFound(
             AcademyNotFoundException ex,
+            HttpServletRequest request
+    ) {
+        ErrorResponseDTO error = new ErrorResponseDTO();
+
+        error.setStatus(HttpStatus.NOT_FOUND.value());
+        error.setError(ex.getMessage());
+        error.setMessage(HttpStatus.NOT_FOUND.getReasonPhrase());
+        error.setPath(request.getRequestURI());
+
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
+    }
+
+    @ExceptionHandler(StudentNotFoundException.class)
+    public ResponseEntity<ErrorResponseDTO> handleStudentNotFoundException(
+            StudentNotFoundException ex,
             HttpServletRequest request
     ) {
         ErrorResponseDTO error = new ErrorResponseDTO();

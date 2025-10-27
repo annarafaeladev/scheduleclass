@@ -2,6 +2,7 @@ package br.com.api.scheduleclass.infrastructure.persistence.repository.impl;
 
 import br.com.api.scheduleclass.domain.model.Academy;
 import br.com.api.scheduleclass.application.repository.AcademyRepository;
+import br.com.api.scheduleclass.infrastructure.mapper.AcademyMapper;
 import br.com.api.scheduleclass.infrastructure.persistence.jpa.AcademyEntity;
 import br.com.api.scheduleclass.infrastructure.persistence.repository.AcademyJpaRepository;
 import lombok.RequiredArgsConstructor;
@@ -17,23 +18,24 @@ public class AcademyRepositoryImpl implements AcademyRepository {
 
     @Override
     public Optional<Academy> findById(Long id) {
+
         return academyJpaRepository.findById(id)
-                .map(this::toDomain);
+                .map(AcademyMapper::toDomain);
     }
 
     @Override
     public Academy save(Academy academy) {
-        AcademyEntity entity = toEntity(academy);
+        AcademyEntity entity = AcademyMapper.toEntity(academy);
 
         AcademyEntity academyEntity = academyJpaRepository.save(entity);
 
-        return toDomain(academyEntity);
+        return AcademyMapper.toDomain(academyEntity);
     }
 
     @Override
     public Optional<Academy> findByEmail(String email) {
         return academyJpaRepository.findByEmail(email)
-                .map(this::toDomain);
+                .map(AcademyMapper::toDomain);
     }
 
     @Override
@@ -41,28 +43,4 @@ public class AcademyRepositoryImpl implements AcademyRepository {
         return academyJpaRepository.existsByEmail(email);
     }
 
-    private Academy toDomain(AcademyEntity entity) {
-        return new Academy(
-                entity.getId(),
-                entity.getName(),
-                entity.getAddress(),
-                entity.getPhone(),
-                entity.getEmail(),
-                entity.getActive(),
-                entity.getCreatedAt(),
-                entity.getUpdatedAt()
-        );
-    }
-
-    private AcademyEntity toEntity(Academy academy) {
-        AcademyEntity entity = new AcademyEntity();
-        entity.setId(academy.getId());
-        entity.setName(academy.getName());
-        entity.setAddress(academy.getAddress());
-        entity.setEmail(academy.getEmail());
-        entity.setPhone(academy.getPhone());
-        entity.setActive(academy.getActive());
-
-        return entity;
-    }
 }
